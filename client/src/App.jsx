@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter,Routes,Route } from 'react-router-dom'
+import {Routes,Route } from 'react-router-dom'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import Navbar from './components/ui/Templates/Navbar'
@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-   <BrowserRouter>
+   
    <Routes>
     <Route path='/' element={<Navbar></Navbar>}></Route>
     <Route path='/signup' element={<SignUp></SignUp>}/>
@@ -19,7 +19,7 @@ function App() {
     <Route path='/search' element={<Search></Search>}/>
     <Route path='/mentor' element={<MentorPage/>}/>
    </Routes>
-   </BrowserRouter>
+   
 
       
     </>
