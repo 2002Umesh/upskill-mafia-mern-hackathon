@@ -4,9 +4,7 @@ import SignIn from "./pages/SignIn.jsx"
 function Layout() {
   return (
     <>
-    <div>mohit</div>
-    <SignIn></SignIn>
-    <SignUp></SignUp>
+    
     </>
     
   )
