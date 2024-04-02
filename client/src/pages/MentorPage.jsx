@@ -25,9 +25,7 @@ function MentorPage() {
         </h3>
         <div className="flex flex-wrap gap-[2rem] ">
           <CourseCard></CourseCard>
-          <CourseCard></CourseCard>
-          <CourseCard></CourseCard>
-          <CourseCard></CourseCard>
+         
         </div>
         <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
             Ratings
