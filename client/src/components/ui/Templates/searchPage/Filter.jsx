@@ -12,8 +12,8 @@ import {
 
 function Filter() {
   return (
-    <div>
-        <div>
+      <div className="flex w-full justify-between gap-[2rem] my-[2rem]">
+        <div className="flex w-3/4 gap-[1rem]">
        
         <Input type="email" placeholder="Search" />
       <Button type="submit">Subscribe</Button>
