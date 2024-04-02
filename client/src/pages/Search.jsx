@@ -1,5 +1,5 @@
-import Filter from '@/components/ui/Templates/Filter'
-import UserCard from '@/components/ui/Templates/UserCard'
+import Filter from '@/components/ui/Templates/searchPage/Filter'
+import UserCard from '@/components/ui/Templates/searchPage/UserCard'
 
 
 function Search() {
