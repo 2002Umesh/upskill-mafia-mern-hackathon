@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import ModeToggle from "../ModeToggle"
 
 
 function Navbar() {
@@ -116,6 +117,7 @@ function Navbar() {
       </nav>
     </SheetContent>
   </Sheet>
+
   <div className="flex items-center gap-4 ml-auto ">
 
     <DropdownMenu className="">
@@ -134,6 +136,7 @@ function Navbar() {
         <DropdownMenuItem>Logout</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
+    <ModeToggle></ModeToggle>
   </div>
 </header>
 
