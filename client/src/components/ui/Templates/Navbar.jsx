@@ -10,9 +10,11 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu"
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import ModeToggle from "../ModeToggle";
+
 import { useAuth } from "@/store/auth";
 
 function Navbar() {
@@ -20,45 +22,28 @@ function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+      <header className="fixed w-full top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link
-            href="#"
+            to="#"
             className="flex items-center gap-2 text-lg font-semibold md:text-base"
           >
             <Package2 className="h-6 w-6" />
             <span className="sr-only">Acme Inc</span>
           </Link>
           <Link
-            href="#"
-            className="text-foreground transition-colors hover:text-foreground"
+            to="/search"
+            className="text-muted-foreground transition-colors hover:text-foreground"
           >
-            Dashboard
+            Search
           </Link>
           <Link
-            href="#"
+            to="#"
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
             Orders
           </Link>
-          <Link
-            href="#"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Products
-          </Link>
-          <Link
-            href="#"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Customers
-          </Link>
-          <Link
-            href="#"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Analytics
-          </Link>
+          
         </nav>
         <Sheet>
           <SheetTrigger asChild>
@@ -74,39 +59,22 @@ function Navbar() {
           <SheetContent side="left">
             <nav className="grid gap-6 text-lg font-medium">
               <Link
-                href="#"
+                to="#"
                 className="flex items-center gap-2 text-lg font-semibold"
               >
                 <Package2 className="h-6 w-6" />
                 <span className="sr-only">Acme Inc</span>
               </Link>
-              <Link href="#" className="hover:text-foreground">
+              <Link to="#" className=" text-muted-foreground hover:text-foreground">
                 Dashboard
               </Link>
               <Link
-                href="#"
+                to="#"
                 className="text-muted-foreground hover:text-foreground"
               >
                 Orders
               </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Products
-              </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Customers
-              </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Analytics
-              </Link>
+              
             </nav>
           </SheetContent>
         </Sheet>
@@ -137,6 +105,7 @@ function Navbar() {
               )}
             </DropdownMenuContent>
           </DropdownMenu>
+          <ModeToggle></ModeToggle>
         </div>
       </header>
 

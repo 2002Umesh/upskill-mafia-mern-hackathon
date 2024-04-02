@@ -6,9 +6,12 @@ import { AuthProvider } from "./store/auth.jsx";
 import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter } from "react-router-dom";
+import ThemeProvider from "./components/ThemeProvider.jsx";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
     <React.StrictMode>
+      <ThemeProvider>
       <BrowserRouter>
         <App />
         <ToastContainer
@@ -25,6 +28,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           transition={Bounce}
         />
       </BrowserRouter>
+      </ThemeProvider>
     </React.StrictMode>
   </AuthProvider>
 );
