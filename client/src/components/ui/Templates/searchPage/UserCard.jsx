@@ -10,9 +10,9 @@ import {
 
 function UserCard() {
   return (
-    <Card className="flex sm:w-[100%] md:w-[35rem]">
-      <div className="w-2/6 h-[100%] flex justify-center align-middle  bg-slte-500">
-        <Avatar className="w-[8rem] h-[8rem] my-auto ">
+    <Card className="flex w-[100%] md:w-[35rem]">
+      <div className="w-2/6 h-[100%] flex justify-center align-middle ">
+        <Avatar className="w-20 h-20 my-auto ">
           <AvatarImage src="https://github.com/shadcn.png" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
