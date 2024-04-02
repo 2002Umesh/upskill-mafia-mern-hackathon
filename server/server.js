@@ -6,6 +6,7 @@ const app = express();
 
 const authRoute = require("./router/auth-route");
 const mentorRoute = require("./router/mentor-route")
+const searchRoute = require("./router/search-route")
 
 const connectDB = require("./utils/db");
 const PORT = 9000;
@@ -20,6 +21,7 @@ app.use(cors(corsOptions));
 app.use(express.json()); // for parsing application/json
 app.use("/auth", authRoute);
 app.use("/ment",mentorRoute)
+app.use("/api",searchRoute)
 
 connectDB().then(() => {
   app.listen(PORT, () => {
