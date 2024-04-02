@@ -8,22 +8,30 @@ import {
   CardTitle,
 } from "../../card"
 
-function UserCard() {
+function UserCard({title,rating,desc,courses,userEnrolled}) {
+  const coursesString =courses.join(", ")
   return (
     <Card className="flex w-[100%] md:w-[35rem]">
       <div className="w-2/6 h-[100%] flex justify-center align-middle ">
-        <Avatar className="w-20 h-20 my-auto ">
+        <Avatar className="w-20 h-20 my-auto">
           <AvatarImage src="https://github.com/shadcn.png" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </div>
-      <div className="w-4/6">
+      <div className="w-5/6">
         <CardHeader>
-          <CardTitle>Card Title</CardTitle>
-          <CardDescription>Card rating</CardDescription>
+          <CardTitle>{title}</CardTitle>
+          <CardDescription><span className="text-lg font-semibold">Rating : </span> {rating} ({userEnrolled})</CardDescription>
         </CardHeader>
         <CardContent>
-          <p>Card description</p>
+
+   
+          <p className="  italic">
+            <b>Courses : </b>
+       {coursesString}
+    </p>
+          <p>{desc}</p>
+          
         </CardContent>
       </div>
     </Card>

@@ -7,7 +7,9 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState("");
   const [mentors, setMentors] = useState([]);
-  const [isLoading,setIsLoading] = useState(true)
+  const [isLoading,setIsLoading] = useState(true);
+  const [course,setCourse]=useState([])
+  const [filteredMentors, setFilteredMentors]=useState([])
   const authToken = `Bearer ${token}`;
   //function to stored the token in local storage
   const storeTokenInLS = (serverToken) => {
@@ -71,6 +73,7 @@ export const AuthProvider = ({ children }) => {
         const data = await response.json();
         console.log(data.msg);
         setMentors(data.msg);
+        setFilteredMentors(data.msg)
       }
     } catch (error) {
       console.log(`services error ${error}`);
@@ -117,7 +120,9 @@ const selected = async (data) => {
         mentors,
         authToken,
         isLoading,
-        selected,getAllUsersData,users
+        selected,getAllUsersData,users,
+        course,setCourse,
+        filteredMentors, setFilteredMentors
       }}
     >
       {children}
