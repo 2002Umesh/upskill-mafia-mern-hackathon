@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
-
+import { Bounce, toast } from "react-toastify";
 export const AuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState("");
-  const [services, setServices] = useState([]);
+  const [mentors, setMentors] = useState([]);
   const [isLoading,setIsLoading] = useState(true)
   const authToken = `Bearer ${token}`;
   //function to stored the token in local storage
@@ -22,7 +22,19 @@ export const AuthProvider = ({ children }) => {
   //   to check whether is loggedIn or not
   const LogoutUser = () => {
     setToken("");
+    toast.success("Logout Successful", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    })
     return localStorage.removeItem("token");
+    
   };
 
   //Authentication JWT -- to get currently logged in user data
@@ -50,15 +62,15 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const getServices = async () => {
+  const getMentors = async () => {
     try {
-      const response = await fetch(`http://localhost:9000/api/service`, {
+      const response = await fetch(`http://localhost:9000/ment/mentors`, {
         method: "GET",
       });
       if (response.ok) {
         const data = await response.json();
         console.log(data.msg);
-        setServices(data.msg);
+        setMentors(data.msg);
       }
     } catch (error) {
       console.log(`services error ${error}`);
@@ -82,11 +94,11 @@ export const AuthProvider = ({ children }) => {
   };
 
   
-//   useEffect(() => {
-//     getAllUsersData()
-//     getServices();
-//     userAuthentication();
-//   }, [token]);
+  useEffect(() => {
+    // getAllUsersData()
+    getMentors();
+    // userAuthentication();
+  }, [token]);
 const selected = async (data) => {
   try {
     //
@@ -102,7 +114,7 @@ const selected = async (data) => {
         storeTokenInLS,
         LogoutUser,
         user,
-        services,
+        mentors,
         authToken,
         isLoading,
         selected,getAllUsersData,users
