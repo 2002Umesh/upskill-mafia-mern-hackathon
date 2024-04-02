@@ -6,6 +6,7 @@ import Navbar from './components/ui/Templates/Navbar'
 import Search from './pages/Search'
 import MentorPage from './pages/MentorPage'
 import Profile from './pages/Profile'
+import Home from './pages/Home'
 
 function App() {
 
@@ -15,7 +16,9 @@ function App() {
    
    <Routes>
     <Route path='/' element={<Navbar></Navbar>}>
+
     <Route path='/search' element={<Search></Search>}/>
+    <Route index element={<Home></Home>}/>
     <Route path='/mentor' element={<MentorPage/>}/>
 
     </Route>
