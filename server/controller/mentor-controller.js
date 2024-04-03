@@ -14,11 +14,13 @@ const mentors = async (req, res) => {
   }
 };
 
-const mentorById = async(req,res)=>{
+const mentorById = async(req,res,next)=>{
   try {
     const id = req.params.id;
-    const data = await Mentor.find( req.query);
-    
+    const data = await Mentor.find({_id:id});
+    if (!id || id.length === 0) {
+      return res.status(404).json({ message: "Unable to find service" });
+    }
     return res.status(200).json(data);
   } catch (error) {
     next(error);
