@@ -1,30 +1,17 @@
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../card";
 
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    
-
-    
-    CardHeader,
-
-  } from "../../card"
-  
-function UserCard() {
+function UserCard({name,review}) {
   return (
     <Card className="w-[100%] md:w-[30rem]">
-      
-      
-        <CardHeader>
-    {/* <CardTitle>Card Title</CardTitle> */}
-    <CardDescription>Card rating</CardDescription>
-  </CardHeader>
-  <CardContent>
-    <p>Card description</p>
-  </CardContent>
-      
-</Card>   
-  )
+      <CardHeader>
+        <CardTitle>{name}</CardTitle>
+        {/* <CardDescription>{name}</CardDescription> */}
+      </CardHeader>
+      <CardContent>
+        <p>{review}</p>
+      </CardContent>
+    </Card>
+  );
 }
 
-export default UserCard
+export default UserCard;

@@ -1,16 +1,19 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { Bounce, toast } from "react-toastify";
+import { useParams } from "react-router-dom";
 export const AuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState("");
+  
   const [mentors, setMentors] = useState([]);
   const [isLoading,setIsLoading] = useState(true);
   const [course,setCourse]=useState([])
   const [filteredMentors, setFilteredMentors]=useState([])
   const authToken = `Bearer ${token}`;
+  const params = useParams();
   //function to stored the token in local storage
   const storeTokenInLS = (serverToken) => {
     setToken(serverToken);
@@ -22,6 +25,10 @@ export const AuthProvider = ({ children }) => {
   console.log("isLoggedin ", isLoggedIn);
 
   //   to check whether is loggedIn or not
+
+  //mentor by id
+ 
+
   const LogoutUser = () => {
     setToken("");
     toast.success("Logout Successful", {
@@ -81,7 +88,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const [users, setUsers] = useState([]);
- 
+  
   const getAllUsersData = async () => {
     try {
       const response = await fetch(`http://localhost:9000/profile/user`, {
@@ -95,6 +102,8 @@ export const AuthProvider = ({ children }) => {
       console.log(error);
     }
   };
+
+  
 
   
   useEffect(() => {
@@ -122,7 +131,7 @@ const selected = async (data) => {
         isLoading,
         selected,getAllUsersData,users,
         course,setCourse,
-        filteredMentors, setFilteredMentors
+        filteredMentors, setFilteredMentors,
       }}
     >
       {children}
