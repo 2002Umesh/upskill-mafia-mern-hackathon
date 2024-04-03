@@ -13,6 +13,15 @@ const mentors = async (req, res) => {
     console.log(`Mentor error: ${error}`);
   }
 };
+const mentorsupdate = async (req, res) => {
+  try {
+    const updateResult = await Mentor.updateMany({}, { $set: { isMentor: true } });
+   
+    res.status(200).json({ msg: "msg" });
+  } catch (error) {
+    console.log(`Mentor error: ${error}`);
+  }
+};
 
 const mentorById = async(req,res,next)=>{
   try {
@@ -27,4 +36,4 @@ const mentorById = async(req,res,next)=>{
   }
 }
 
-module.exports = {mentors,mentorById};
+module.exports = {mentors,mentorById,mentorsupdate};

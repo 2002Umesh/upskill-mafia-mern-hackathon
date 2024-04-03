@@ -9,20 +9,24 @@ import {
     CardTitle,
   } from "../../card"
 
+  import { useNavigate } from "react-router-dom";
 
-function ProfileCard() {
+function ProfileCard({name,recentMsg,id}) {
+
+  const navigate=useNavigate();
   return (
-    <Card>
+ 
+ <Card onClick={()=>navigate(`/profile/chat/${id}`)} className="w-[100%] md:w-[20rem]">
                   <CardHeader>
-                    <CardTitle>name</CardTitle>
+                    <CardTitle>{name}</CardTitle>
                     <CardDescription>
-                      Lipsum dolor sit amet, consectetur adipiscing elit
+                      {recentMsg}
                     </CardDescription>
                   </CardHeader>
-                  <CardFooter>
-                    days ago
-                  </CardFooter>
+            
                 </Card>
+
+   
   )
 }
 

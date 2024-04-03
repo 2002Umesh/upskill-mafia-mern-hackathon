@@ -8,7 +8,7 @@ import MessageCard from "@/components/ui/Templates/profilePage/MessageCard"
 function Profile() {
     return (
         <>
-            <Sidebar></Sidebar>
+           
             <div className="flex p-[6.4rem] gap-[2rem] flex-col">
                 <div className="flex  gap-[2rem]">
                     <div className="sm:w-3/4 md:w-2/4">
@@ -33,8 +33,7 @@ function Profile() {
 
             </div>
 
-            {/* <ChatCard></ChatCard>
-    <MessageCard></MessageCard> */}
+            
 
         </>
     )

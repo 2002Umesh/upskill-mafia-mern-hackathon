@@ -7,6 +7,11 @@ import Search from './pages/Search'
 import MentorPage from './pages/MentorPage'
 import Profile from './pages/Profile'
 import Home from './pages/Home'
+import Sidebar from './components/ui/Templates/profilePage/Sidebar'
+import ChatCard from "./components/ui/Templates/profilePage/ChatCard"
+import MessageCard from "./components/ui/Templates/profilePage/MessageCard"
+import Chatpage from "./pages/ChatPage"
+import SinglePage from './pages/SinglePage'
 
 
 function App() {
@@ -23,7 +28,11 @@ function App() {
     <Route path='/mentor/:id' element={<MentorPage/>}/>
 
     </Route>
-    <Route path='/profile' element={<Profile/>}/>
+    <Route path='/profile' element={<Sidebar/>}>
+    <Route path='/profile/chat' element={<Chatpage></Chatpage>}/>
+    <Route path='/profile/chat/:id' element={<SinglePage></SinglePage>}/>
+    <Route index element={<Profile></Profile>}/>
+    </Route>
     <Route path='/signup' element={<SignUp></SignUp>}/>
     <Route path='/signin' element={<SignIn></SignIn>}/>
    </Routes>
