@@ -6,6 +6,7 @@ import {
     AccordionTrigger,
   } from "@/components/ui/accordion"
 import TestimonialCard from "@/components/ui/Templates/mentorPage/TestimonialCard"
+import Footer from "@/components/footer/Footer"
 
 function Home() {
     return (
@@ -55,6 +56,7 @@ function Home() {
     <TestimonialCard></TestimonialCard>
     <TestimonialCard></TestimonialCard>
 </div>
+<Footer/>
         </div>
 
     )
