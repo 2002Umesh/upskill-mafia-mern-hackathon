@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { NavLink,useNavigate } from "react-router-dom"
 import { Avatar, AvatarFallback, AvatarImage } from "../../avatar"
 import {
   Card,
@@ -12,11 +12,12 @@ import { useAuth } from "@/store/auth"
 
 
 function UserCard({title,rating,desc,courses,userEnrolled,id}) {
+  const navigate=useNavigate();
   const coursesString =courses.join(", ")
   // const {getSingleMentorData} = useAuth();
   return (
-    <NavLink to={`/mentor/${id}`}>
-    <Card className="flex w-[100%] md:w-[35rem]" >
+
+    <Card className="flex w-[100%] md:w-[35rem]" onClick={()=>navigate(`/mentor/${id}`)}>
       <div className="w-2/6 h-[100%] flex justify-center align-middle ">
         <Avatar className="w-20 h-20 my-auto">
           <AvatarImage src="https://github.com/shadcn.png" />
@@ -40,7 +41,8 @@ function UserCard({title,rating,desc,courses,userEnrolled,id}) {
         </CardContent>
       </div>
     </Card>
-    </NavLink>
+
+    
   )
 }
 
