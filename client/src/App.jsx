@@ -8,6 +8,7 @@ import MentorPage from './pages/MentorPage'
 import Profile from './pages/Profile'
 import Home from './pages/Home'
 
+
 function App() {
 
 
@@ -25,7 +26,6 @@ function App() {
     <Route path='/profile' element={<Profile/>}/>
     <Route path='/signup' element={<SignUp></SignUp>}/>
     <Route path='/signin' element={<SignIn></SignIn>}/>
-   
    </Routes>
    
 
