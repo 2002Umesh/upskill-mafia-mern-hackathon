@@ -6,7 +6,7 @@ function Search() {
   const {filteredMentors} = useAuth();
 const displaymentorsList=filteredMentors?.map((item,index)=>{
   return(
-<UserCard key={index} title={item.name} rating={item.rating} desc={item.description} courses={item.courses} userEnrolled={item.userEnrolled}></UserCard>
+<UserCard key={index} title={item.name} rating={item.rating} desc={item.description} courses={item.courses} userEnrolled={item.userEnrolled} id={item._id}></UserCard>
   )
 })
 

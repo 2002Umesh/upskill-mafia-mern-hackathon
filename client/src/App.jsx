@@ -19,7 +19,7 @@ function App() {
 
     <Route path='/search' element={<Search></Search>}/>
     <Route index element={<Home></Home>}/>
-    <Route path='/mentor' element={<MentorPage/>}/>
+    <Route path='/mentor/:id' element={<MentorPage/>}/>
 
     </Route>
     <Route path='/profile' element={<Profile/>}/>
