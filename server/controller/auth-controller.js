@@ -1,4 +1,5 @@
 const User = require("../models/user-model");
+const Mentor = require("../models/mentor-model");
 const bcrypt = require("bcryptjs");
 const home = async (req, res) => {
   try {
@@ -17,7 +18,12 @@ const register = async (req, res) => {
       return res.status(400).json({ message: "email already exists" });
     }
 
-    const userCreated = await User.create({firstname, lastname, email, password });
+    const userCreated = await User.create({
+      firstname,
+      lastname,
+      email,
+      password,
+    });
 
     res.status(200).json({
       msg: "registration successful",
@@ -25,7 +31,7 @@ const register = async (req, res) => {
       userID: userCreated._id.toString(),
     });
 
-    console.log(userCreated)
+    console.log(userCreated);
   } catch (error) {
     res.status(500).json({ message: "internal service error" });
   }
@@ -35,7 +41,8 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const userExist = await User.findOne({ email });
+    const userExist =
+      (await User.findOne({ email })) || Mentor.findOne({ email });
     if (!userExist) {
       return res.status(401).json({ message: "Invalid Credentials!" });
     }

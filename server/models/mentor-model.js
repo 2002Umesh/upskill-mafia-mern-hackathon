@@ -7,6 +7,7 @@ const mentorSchema = new Schema({
   description: { type: String, required: true },
   phone: { type: String, required: true },
   gender: { type: String, required: true },
+  password:{type:String,requird:true},
   userEnrolled: { type: Number, required: true },
   testimonials: [
     {
