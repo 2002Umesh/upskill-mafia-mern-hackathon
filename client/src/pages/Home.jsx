@@ -14,7 +14,7 @@ function Home() {
             <div className="w-full h-screen flex flex-col-reverse md:flex-row">
                 <div className="flex flex-col justify-center align-middle w-[100%] h-2/4 md:h-[100%] md:w-3/5 p-[4rem] gap-[2rem]">
                     <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-                        Taxing Laughter: The Joke Tax Chronicles
+                    Unlock Potential, Transform Futures: Mentorship Awaits
                     </h1>
                     <div className="flex gap-[1rem]">
                         <Button>Get started</Button>
@@ -26,26 +26,29 @@ function Home() {
 <div className="w-full h-full bg-hero-image bg-cover"></div>
                 </div>
             </div>
+            <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center mt-6">
+            Tailored Mentorship for Your Growth
+            </h1>
+            
             <div className="p-[2rem] w-full md:w-[40vw] flex mx-auto my-[6.4rem]">
+            
             <Accordion type="single" collapsible className="w-full">
       <AccordionItem value="item-1">
-        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionTrigger>Offer 1:1 sessions</AccordionTrigger>
         <AccordionContent>
-          Yes. It adheres to the WAI-ARIA design pattern.
+        Mentorship sessions, consultations, discovery calls - do what you do best. We take care of everything else
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
-        <AccordionTrigger>Is it styled?</AccordionTrigger>
+        <AccordionTrigger>Setup Priority DM in seconds</AccordionTrigger>
         <AccordionContent>
-          Yes. It comes with default styles that matches the other
-          components&apos; aesthetic.
+        Let your followers ask text based Priority DM. Then answer as per your convenience
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-3">
-        <AccordionTrigger>Is it animated?</AccordionTrigger>
+        <AccordionTrigger>Bundle your services</AccordionTrigger>
         <AccordionContent>
-          Yes. It&apos;s animated by default, but you can disable it if you
-          prefer.
+        Create packages of all your services. Perfect for high-ticket and long term engagements
         </AccordionContent>
       </AccordionItem>
     </Accordion>
