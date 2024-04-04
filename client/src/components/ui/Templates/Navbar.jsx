@@ -89,8 +89,11 @@ function Navbar() {
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
+              <Link to="/profile">
+              <DropdownMenuItem>Profile</DropdownMenuItem>
+              </Link>
+              
+     
               <DropdownMenuSeparator />
 
               {isLoggedIn ? (

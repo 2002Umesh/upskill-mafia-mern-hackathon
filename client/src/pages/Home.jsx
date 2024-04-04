@@ -26,7 +26,11 @@ function Home() {
 <div className="w-full h-full bg-hero-image bg-cover"></div>
                 </div>
             </div>
-            <div className="p-[2rem] w-full md:w-[40vw] flex mx-auto my-[6.4rem]">
+            <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl my-[6.4rem] text-center px-[6.4rem]">
+      what we serve ?
+    </h1>
+            <div className="p-[2rem] w-full md:w-[40vw] flex flex-col mx-auto gap-[6.4rem]">
+               
             <Accordion type="single" collapsible className="w-full">
       <AccordionItem value="item-1">
         <AccordionTrigger>Is it accessible?</AccordionTrigger>
@@ -50,11 +54,17 @@ function Home() {
       </AccordionItem>
     </Accordion>
             </div>
-<div className="p-[2rem] w-full md:w-[80vw] flex mx-auto my-[6.4rem] flex-wrap justify-around gap-[2rem]">
+<div className="p-[2rem] w-full md:w-[80vw] flex justify-center flex-col m-auto">
+<h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center my-[6.4rem]">
+      FAQ&apos;s(frequently asked questions)
+    </h1>
+    <div className="flex mx-auto mb-[4rem] flex-wrap justify-around gap-[2rem]">
     <TestimonialCard></TestimonialCard>
     <TestimonialCard></TestimonialCard>
     <TestimonialCard></TestimonialCard>
     <TestimonialCard></TestimonialCard>
+    </div>
+    
 </div>
 <Footer/>
         </div>

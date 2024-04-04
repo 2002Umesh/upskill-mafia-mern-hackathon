@@ -4,8 +4,8 @@ import { Github } from "lucide-react";
 
 function Footer() {
   return (
-    <div className="bg-border">
-    <div className="bg-border px-[2rem] py-[6.4rem] w-full  flex flex-col md:flex-row justify-between  gap-[4rem] align-middle ">
+    <div className="bg-foreground text-background">
+    <div className=" px-[2rem] py-[6.4rem] w-full  flex flex-col md:flex-row justify-between  gap-[4rem] align-middle ">
       <div  className="w-[100%] md:w-2/6 flex justify-center">
       <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
       Error 404

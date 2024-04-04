@@ -72,5 +72,23 @@ const user = async (req, res) => {
     res.status(401).json({ message: `error from user route,${error}` });
   }
 };
+const alluser = async (req, res) => {
+  try {
+    const users=await User.find({})
 
-module.exports = { home, register, login, user };
+    return res.status(200).json(users);
+  } catch (error) {
+    res.status(401).json({ message: `error from user route,${error}` });
+  }
+};
+const alluserupdate = async (req, res) => {
+  try {
+    const updateResult = await User.updateMany({}, { $set: { isMentor: "false" } });
+
+    return res.status(200).send(updateResult);
+  } catch (error) {
+    res.status(401).json({ message: `error from user route,${error}` });
+  }
+};
+
+module.exports = { home, register, login, user,alluser,alluserupdate };

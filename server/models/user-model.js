@@ -18,15 +18,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  isSubAdmin: {
+  isMentor: {
     type: Boolean,
     default: false,
   },
-  isMasterAdmin: {
-    type: Boolean,
-    default: false,
-  },
-  services: [{ type: String, required: true }],
 });
 
 userSchema.pre("save", async function (next) {
