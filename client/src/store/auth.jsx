@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { Bounce, toast } from "react-toastify";
 import { useParams } from "react-router-dom";
+import {useNavigate} from "react-router-dom"
 export const AuthContext = createContext();
 
 
@@ -8,7 +9,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState("");
-
+const navigate=useNavigate();
   const [mentors, setMentors] = useState([]);
   const [isLoading,setIsLoading] = useState(true);
   const [course,setCourse]=useState([])
@@ -129,6 +130,30 @@ const allChatFetchFunction = async () => {
     console.error('Error fetching data:', error.message);
   }
 };
+const createChat = async (id) => {
+  try {
+    const response = await fetch(apiUrl,{
+      method: "POST",
+
+      headers: {
+        Authorization: authToken,
+        'Content-Type': 'application/json',
+      },
+      body:JSON.stringify({"userId":id }),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    
+console.log("user",data)
+    setAllChats([...allChats,data])
+    navigate(`/profile/chat/${data?._id}`)
+ console.log(allChats)
+  } catch (error) {
+    console.error('Error fetching data:', error.message);
+  }
+};
 const allMessageFetchFunction = async (id) => {
   const msgUrl = `http://localhost:9000/message/${id}`;
   try {
@@ -173,16 +198,14 @@ console.log(data);
     console.error('Error fetching data:', error.message);
   }
 };
-useEffect(()=>{
-  allChatFetchFunction();
-},[setAllChats])
+
   
   useEffect(() => {
     // getAllUsersData()
-    getMentors();
+
     
     
-    // userAuthentication();
+    userAuthentication();
   }, [token]);
 const selected = async (data) => {
   try {
@@ -204,7 +227,7 @@ const selected = async (data) => {
         isLoading,
         selected,getAllUsersData,users,
         course,setCourse,
-        filteredMentors, setFilteredMentors,allChatFetchFunction,allChats,allMessageFetchFunction,setAllMessage,allMessage,sendMessage
+        filteredMentors, setFilteredMentors,allChatFetchFunction,allChats,allMessageFetchFunction,setAllMessage,allMessage,sendMessage,getMentors,createChat
       }}
     >
       {children}

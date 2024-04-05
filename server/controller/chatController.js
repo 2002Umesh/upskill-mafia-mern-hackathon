@@ -6,8 +6,8 @@ const User = require("../models/user-model");
 //@route           POST /api/chat/
 //@access          Protected
 const accessChat = async (req, res) => {
- 
-    
+
+
   const { userId } = req.body;
 
   if (!userId) {
@@ -23,15 +23,12 @@ const accessChat = async (req, res) => {
   })
     .populate("users", "-password")
     .populate("latestMessage");
-console.log(isChat)
+
   isChat = await User.populate(isChat, {
     path: "latestMessage.sender",
     select: "firstname email",
   });
-  isChat = await Mentor.populate(isChat, {
-    path: "latestMessage.sender",
-    select: "firstname email",
-  });
+
 
   if (isChat.length > 0) {
     res.send(isChat[0]);

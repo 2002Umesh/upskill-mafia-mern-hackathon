@@ -1,9 +1,13 @@
 import Filter from '@/components/ui/Templates/searchPage/Filter'
 import UserCard from '@/components/ui/Templates/searchPage/UserCard'
 import { useAuth } from '@/store/auth';
+import { useEffect } from 'react';
 
 function Search() {
-  const {filteredMentors} = useAuth();
+  const {filteredMentors,getMentors} = useAuth();
+  useEffect(()=>{
+    getMentors()
+  },[])
 const displaymentorsList=filteredMentors?.map((item,index)=>{
   return(
 <UserCard key={index} title={item.name} rating={item.rating} desc={item.description} courses={item.courses} userEnrolled={item.userEnrolled} id={item._id}></UserCard>
@@ -15,7 +19,9 @@ const displaymentorsList=filteredMentors?.map((item,index)=>{
     <Filter></Filter>
 
     <div className='flex flex-wrap gap-[1rem]'>
-    {displaymentorsList}
+      {
+        displaymentorsList?displaymentorsList:"Fetching Data"
+      }
 
     </div>
    
