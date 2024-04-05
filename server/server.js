@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const http = require("http"); // require http module
 
 const app = express();
 
@@ -13,7 +12,6 @@ const messageRoute = require("./router/MessageRouter")
 
 const connectDB = require("./utils/db");
 const PORT = 9000;
-
 
 const corsOptions = {
   origin: ["http://localhost:5173"],
@@ -32,7 +30,7 @@ app.use("/message",messageRoute);
 
 
 connectDB().then(() => {
-  server.listen(PORT, () => {
+  app.listen(PORT, () => {
     console.log(`server running at ${PORT}`);
   });
 });
