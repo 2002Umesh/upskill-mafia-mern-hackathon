@@ -3,15 +3,20 @@ import { Bounce, toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 export const AuthContext = createContext();
 
+
+
+
 // eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState("");
-  
+
   const [mentors, setMentors] = useState([]);
   const [isLoading,setIsLoading] = useState(true);
   const [course,setCourse]=useState([])
-  const [filteredMentors, setFilteredMentors]=useState([])
+  const [filteredMentors, setFilteredMentors]=useState([]);
+  const [allChats,setAllChats]=useState([]);
+  const [allMessage,setAllMessage]=useState([]);
   const authToken = `Bearer ${token}`;
   const params = useParams();
   //function to stored the token in local storage
@@ -19,7 +24,7 @@ export const AuthProvider = ({ children }) => {
     setToken(serverToken);
     return localStorage.setItem("token", serverToken);
   };
-
+  
   //   this is the get the value in either true or false in the original state of token
   let isLoggedIn = !!token;
   console.log("isLoggedin ", isLoggedIn);
@@ -80,7 +85,7 @@ export const AuthProvider = ({ children }) => {
         const data = await response.json();
         console.log(data.msg);
         setMentors(data.msg);
-        setFilteredMentors(data.msg)
+        setFilteredMentors(data.msg.slice(0,4))
       }
     } catch (error) {
       console.log(`services error ${error}`);
@@ -103,12 +108,84 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  
+  const apiUrl = 'http://localhost:9000/chat';
 
+const allChatFetchFunction = async () => {
+  try {
+    const response = await fetch(apiUrl,{
+      method: "GET",
+
+      headers: {
+        Authorization: authToken,
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    
+    
+    setAllChats(data)
+    
+ console.log(allChats)
+  } catch (error) {
+    console.error('Error fetching data:', error.message);
+  }
+};
+const allMessageFetchFunction = async (id) => {
+  const msgUrl = `http://localhost:9000/message/${id}`;
+  try {
+    const response = await fetch(msgUrl,{
+      method: "GET",
+
+      headers: {
+        Authorization: authToken,
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    
+
+    setAllMessage(data);
+    
+
+  } catch (error) {
+    console.error('Error fetching data:', error.message);
+  }
+};
+const sendMessage = async (id,content) => {
+  const msgUrl = `http://localhost:9000/message`;
+  try {
+    const response = await fetch(msgUrl,{
+      method: "POST",
+
+      headers: {
+        Authorization: authToken,
+        'Content-Type': 'application/json',
+      },
+      body:JSON.stringify({"chatId":id, content }),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    
+console.log(data);
+  } catch (error) {
+    console.error('Error fetching data:', error.message);
+  }
+};
+useEffect(()=>{
+  allChatFetchFunction();
+},[setAllChats])
   
   useEffect(() => {
     // getAllUsersData()
     getMentors();
+    
+    
     // userAuthentication();
   }, [token]);
 const selected = async (data) => {
@@ -130,8 +207,8 @@ const selected = async (data) => {
         authToken,
         isLoading,
         selected,getAllUsersData,users,
-        course,setCourse,
-        filteredMentors, setFilteredMentors,
+        course,setCourse,token,
+        filteredMentors, setFilteredMentors,allChatFetchFunction,allChats,allMessageFetchFunction,setAllMessage,allMessage,sendMessage
       }}
     >
       {children}

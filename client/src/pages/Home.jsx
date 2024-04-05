@@ -26,12 +26,10 @@ function Home() {
 <div className="w-full h-full bg-hero-image bg-cover"></div>
                 </div>
             </div>
-            <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center mt-6">
+            <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl my-[6.4rem] text-center px-[6.4rem]">
             Tailored Mentorship for Your Growth
-            </h1>
-            
+    </h1>
             <div className="p-[2rem] w-full md:w-[40vw] flex mx-auto my-[6.4rem]">
-            
             <Accordion type="single" collapsible className="w-full">
       <AccordionItem value="item-1">
         <AccordionTrigger>Offer 1:1 sessions</AccordionTrigger>
@@ -53,11 +51,18 @@ function Home() {
       </AccordionItem>
     </Accordion>
             </div>
-<div className="p-[2rem] w-full md:w-[80vw] flex mx-auto my-[6.4rem] flex-wrap justify-around gap-[2rem]">
-    <TestimonialCard></TestimonialCard>
-    <TestimonialCard></TestimonialCard>
-    <TestimonialCard></TestimonialCard>
-    <TestimonialCard></TestimonialCard>
+<div className="p-[2rem] w-full md:w-[80vw] flex justify-center flex-col m-auto">
+<h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center my-[6.4rem]">
+Empowering Success: Hear From Our Users!
+    </h1>
+    <div className="flex mx-auto mb-[4rem] flex-wrap justify-around gap-[2rem]">
+    <TestimonialCard name={"Emily Johnson"} review={"I can't thank Error 404 enough for their virtual mentorship program. It has tremendously improved my coding skills and confidence. The personalized guidance and support I received helped me tackle complex projects with ease. Highly recommended!"} >
+    </TestimonialCard>
+    <TestimonialCard name={"Sarah Parker"} review={"Error 404's virtual mentorship program has been a game-changer for me. The mentorship sessions were tailored to my specific needs, helping me navigate challenges and refine my career goals. With their guidance, I was able to land my dream job in data science. I'm grateful for the support and encouragement I received throughout the journey."}></TestimonialCard>
+    <TestimonialCard name={"Michael Brown"} review={"I had been struggling to transition into a leadership role in my company. Error 404's virtual mentorship program provided me with invaluable leadership insights and strategies. The mentorship sessions helped me hone my communication skills and foster stronger relationships with my team members. Thanks to Error 404, I now feel equipped to lead with confidence."}></TestimonialCard>
+    <TestimonialCard name={"John Smith"} review={"As a newcomer to the tech industry, I was overwhelmed by the vast amount of information. Error 404's virtual mentorship provided me with invaluable insights and advice. Through their mentorship program, I gained practical skills and industry knowledge that accelerated my career growth. Thank you, Error 404!"}></TestimonialCard>
+    </div>
+    
 </div>
 <Footer/>
         </div>

@@ -15,6 +15,10 @@ const mentorSchema = new Schema({
     },
   ],
   courses: [{ type: String, required: true }],
+  isMentor: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const Mentor = model("Mentor", mentorSchema);

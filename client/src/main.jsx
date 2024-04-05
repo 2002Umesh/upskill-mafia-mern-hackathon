@@ -10,9 +10,11 @@ import ThemeProvider from "./components/ThemeProvider.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
+  <BrowserRouter>
+ 
     <React.StrictMode>
       <ThemeProvider>
-      <BrowserRouter>
+     
         <App />
         <ToastContainer
           position="top-right"
@@ -27,8 +29,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           theme="dark"
           transition={Bounce}
         />
-      </BrowserRouter>
+     
       </ThemeProvider>
     </React.StrictMode>
+
+  </BrowserRouter>
   </AuthProvider>
 );
