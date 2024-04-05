@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { Bounce, toast } from "react-toastify";
 import { useParams } from "react-router-dom";
+import {useNavigate} from "react-router-dom"
 export const AuthContext = createContext();
 
 
@@ -10,7 +11,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState("");
-
+const navigate=useNavigate();
   const [mentors, setMentors] = useState([]);
   const [isLoading,setIsLoading] = useState(true);
   const [course,setCourse]=useState([])
@@ -177,16 +178,14 @@ console.log(data);
     console.error('Error fetching data:', error.message);
   }
 };
-useEffect(()=>{
-  allChatFetchFunction();
-},[setAllChats])
+
   
   useEffect(() => {
     // getAllUsersData()
-    getMentors();
+
     
     
-    // userAuthentication();
+    userAuthentication();
   }, [token]);
 const selected = async (data) => {
   try {

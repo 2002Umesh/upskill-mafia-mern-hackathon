@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from "../../button"
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "../../card"
-import { Label } from "../../label"
 import { Textarea } from "@/components/ui/textarea"
 import { useAuth } from '@/store/auth';
 import { useParams } from 'react-router-dom';

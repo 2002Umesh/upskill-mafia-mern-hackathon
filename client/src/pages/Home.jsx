@@ -56,7 +56,7 @@ function Home() {
 Empowering Success: Hear From Our Users!
     </h1>
     <div className="flex mx-auto mb-[4rem] flex-wrap justify-around gap-[2rem]">
-    <TestimonialCard name={"Emily Johnson"} review={"I can't thank Error 404 enough for their virtual mentorship program. It has tremendously improved my coding skills and confidence. The personalized guidance and support I received helped me tackle complex projects with ease. Highly recommended!"} >
+    <TestimonialCard name={"Rachel Green"} review={"I can't thank Error 404 enough for their virtual mentorship program. It has tremendously improved my coding skills and confidence. The personalized guidance and support I received helped me tackle complex projects with ease. Highly recommended!"} >
     </TestimonialCard>
     <TestimonialCard name={"Sarah Parker"} review={"Error 404's virtual mentorship program has been a game-changer for me. The mentorship sessions were tailored to my specific needs, helping me navigate challenges and refine my career goals. With their guidance, I was able to land my dream job in data science. I'm grateful for the support and encouragement I received throughout the journey."}></TestimonialCard>
     <TestimonialCard name={"Michael Brown"} review={"I had been struggling to transition into a leadership role in my company. Error 404's virtual mentorship program provided me with invaluable leadership insights and strategies. The mentorship sessions helped me hone my communication skills and foster stronger relationships with my team members. Thanks to Error 404, I now feel equipped to lead with confidence."}></TestimonialCard>

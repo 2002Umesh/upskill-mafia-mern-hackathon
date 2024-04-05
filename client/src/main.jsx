@@ -9,9 +9,9 @@ import { BrowserRouter } from "react-router-dom";
 import ThemeProvider from "./components/ThemeProvider.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <AuthProvider>
+
   <BrowserRouter>
- 
+   <AuthProvider>
     <React.StrictMode>
       <ThemeProvider>
      
@@ -32,7 +32,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
      
       </ThemeProvider>
     </React.StrictMode>
-
+    </AuthProvider>
   </BrowserRouter>
-  </AuthProvider>
+
 );
