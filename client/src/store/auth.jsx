@@ -5,6 +5,8 @@ import {useNavigate} from "react-router-dom"
 export const AuthContext = createContext();
 
 
+
+
 // eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -23,7 +25,7 @@ const navigate=useNavigate();
     setToken(serverToken);
     return localStorage.setItem("token", serverToken);
   };
-
+  
   //   this is the get the value in either true or false in the original state of token
   let isLoggedIn = !!token;
   console.log("isLoggedin ", isLoggedIn);
@@ -84,7 +86,7 @@ const navigate=useNavigate();
         const data = await response.json();
         console.log(data.msg);
         setMentors(data.msg);
-        setFilteredMentors(data.msg)
+        setFilteredMentors(data.msg.slice(0,4))
       }
     } catch (error) {
       console.log(`services error ${error}`);
@@ -123,32 +125,9 @@ const allChatFetchFunction = async () => {
     }
     const data = await response.json();
     
-
-    setAllChats(data)
- console.log(allChats)
-  } catch (error) {
-    console.error('Error fetching data:', error.message);
-  }
-};
-const createChat = async (id) => {
-  try {
-    const response = await fetch(apiUrl,{
-      method: "POST",
-
-      headers: {
-        Authorization: authToken,
-        'Content-Type': 'application/json',
-      },
-      body:JSON.stringify({"userId":id }),
-    });
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    const data = await response.json();
     
-console.log("user",data)
-    setAllChats([...allChats,data])
-    navigate(`/profile/chat/${data?._id}`)
+    setAllChats(data)
+    
  console.log(allChats)
   } catch (error) {
     console.error('Error fetching data:', error.message);
@@ -171,6 +150,7 @@ const allMessageFetchFunction = async (id) => {
     
 
     setAllMessage(data);
+    
 
   } catch (error) {
     console.error('Error fetching data:', error.message);
@@ -226,8 +206,8 @@ const selected = async (data) => {
         authToken,
         isLoading,
         selected,getAllUsersData,users,
-        course,setCourse,
-        filteredMentors, setFilteredMentors,allChatFetchFunction,allChats,allMessageFetchFunction,setAllMessage,allMessage,sendMessage,getMentors,createChat
+        course,setCourse,token,
+        filteredMentors, setFilteredMentors,allChatFetchFunction,allChats,allMessageFetchFunction,setAllMessage,allMessage,sendMessage
       }}
     >
       {children}

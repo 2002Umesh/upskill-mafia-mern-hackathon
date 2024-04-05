@@ -1,8 +1,9 @@
-import{ useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from "../../button"
 import { Textarea } from "@/components/ui/textarea"
 import { useAuth } from '@/store/auth';
 import { useParams } from 'react-router-dom';
+
 
 function MessageCard() {
   const {sendMessage} = useAuth();
@@ -11,6 +12,8 @@ const {id}=useParams()
     const handleMessageChange = (event) => {
         setMessage(event.target.value);
     };
+
+    
 
     const click = () => {
       sendMessage(id,message)
