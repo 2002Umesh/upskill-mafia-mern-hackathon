@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
   <BrowserRouter>
  
-    <React.StrictMode>
+    <>
       <ThemeProvider>
      
         <App />
@@ -31,7 +31,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         />
      
       </ThemeProvider>
-    </React.StrictMode>
+    </>
 
   </BrowserRouter>
   </AuthProvider>

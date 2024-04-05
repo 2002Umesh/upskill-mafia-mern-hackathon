@@ -23,7 +23,7 @@ const accessChat = async (req, res) => {
   })
     .populate("users", "-password")
     .populate("latestMessage");
-console.log(isChat)
+// console.log(isChat)
   isChat = await User.populate(isChat, {
     path: "latestMessage.sender",
     select: "firstname email",
