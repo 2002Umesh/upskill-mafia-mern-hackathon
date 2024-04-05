@@ -11,7 +11,7 @@ import ThemeProvider from "./components/ThemeProvider.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
 
   <BrowserRouter>
-   <AuthProvider>
+ <AuthProvider>
     <React.StrictMode>
       <ThemeProvider>
      

@@ -13,7 +13,7 @@ import { useAuth } from "@/store/auth"
 
 function UserCard({title,rating,desc,courses,userEnrolled,id}) {
   const navigate=useNavigate();
-  const coursesString =courses.join(", ")
+  const coursesString =courses?.join(", ")
   // const {getSingleMentorData} = useAuth();
   return (
 

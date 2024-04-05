@@ -3,7 +3,7 @@ const User =require("../models/user-model")
 
 const mentors = async (req, res) => {
   try {
-    const response = await Mentor.find();
+    const response = await User.find({isMentor:true});
     if (!response) {
       res.status(404).json({ msg: "no Mentor found" });
 
@@ -24,7 +24,7 @@ const mentorsupdate = async (req, res) => {
   }
 };
 
-const mentorById = async(req,res)=>{
+const mentorById = async(req,res,next)=>{
   try {
     const id = req.params.id;
     console.log(id)

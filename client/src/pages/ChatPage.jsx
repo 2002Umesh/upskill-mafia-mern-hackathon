@@ -16,9 +16,10 @@ const displayChats=allChats?.map((item,index)=>{
  
     const senderFirstname = item?.users[1]?.firstname;
         const recentMsg = item?.latestMessage?.content;
-const id=item?._id
+const id=item?._id;
+console.log(item[0]);
     return(
-<ChatCard key={index} name={senderFirstname} recentMsg={recentMsg} id={id}></ChatCard>
+<ChatCard key={index} name={senderFirstname} recentMsg={recentMsg} id={id} chat={item}></ChatCard>
     )
 })
   return (

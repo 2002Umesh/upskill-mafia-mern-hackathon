@@ -25,7 +25,7 @@ const register = async (req, res) => {
       userID: userCreated._id.toString(),
     });
 
-    console.log(userCreated)
+    // console.log(userCreated)
   } catch (error) {
     res.status(500).json({ message: "internal service error" });
   }
@@ -59,7 +59,7 @@ const login = async (req, res) => {
 const user = async (req, res) => {
   try {
     const userData = req.user;
-    console.log(userData);
+    // console.log(userData);
     return res.status(200).json({ userData });
   } catch (error) {
     res.status(401).json({ message: `error from user route,${error}` });
