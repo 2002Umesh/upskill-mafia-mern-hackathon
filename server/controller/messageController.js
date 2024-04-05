@@ -43,7 +43,6 @@ const sendMessage = async (req, res) => {
       path: "chat.users",
       select: "firstname email",
     });
-
     await Chat.findByIdAndUpdate(req.body.chatId, { latestMessage: message });
 
     res.status(200).send(message);

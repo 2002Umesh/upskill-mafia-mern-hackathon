@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { Bounce, toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 import { io } from "socket.io-client";
+import {useNavigate} from "react-router-dom"
 export const AuthContext = createContext();
 
 const ENDPOINT = "http://localhost:9000";
@@ -10,8 +11,9 @@ var socket;
 // eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const [user, setUser] = useState({});
   const [selectedChat,setSelectedchat] = useState()
+  const [user, setUser] = useState("");
+const navigate=useNavigate();
   const [mentors, setMentors] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [course, setCourse] = useState([]);
@@ -134,9 +136,9 @@ console.log("user",user)
   const allMessageFetchFunction = async (id) => {
     const msgUrl = `http://localhost:9000/message/${id}`;
     try {
-      const response = await fetch(msgUrl, {
+      const response = await fetch(msgUrl,{
         method: "GET",
-
+  
         headers: {
           Authorization: authToken,
         },
@@ -145,13 +147,39 @@ console.log("user",user)
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-
+      
+  
       setAllMessage(data);
-      socket.emit("join chat", id);
+  
     } catch (error) {
-      console.error("Error fetching data:", error.message);
+      console.error('Error fetching data:', error.message);
     }
   };
+const createChat = async (id) => {
+  try {
+    const response = await fetch(apiUrl,{
+      method: "POST",
+
+      headers: {
+        Authorization: authToken,
+        'Content-Type': 'application/json',
+      },
+      body:JSON.stringify({"userId":id }),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    
+console.log("user",data)
+    setAllChats([...allChats,data])
+    navigate(`/profile/chat/${data?._id}`)
+ console.log(allChats)
+  } catch (error) {
+    console.error('Error fetching data:', error.message);
+  }
+};
+
   const sendMessage = async (id, content) => {
     const msgUrl = `http://localhost:9000/message`;
     try {
@@ -185,6 +213,10 @@ console.log("user",user)
 
   useEffect(() => {
     // getAllUsersData()
+    if(!token){
+      navigate('/signin')
+      return
+    }
     getMentors();
 
     userAuthentication();
@@ -221,7 +253,7 @@ console.log("user",user)
         setAllMessage,
         allMessage,
         sendMessage,
-        selectedChat,setSelectedchat,
+        selectedChat,setSelectedchat,getMentors,createChat
       }}
     >
       {children}

@@ -5,13 +5,16 @@ import { useAuth } from '@/store/auth';
 
 function ChatPage() {
 
-    const {allChats} = useAuth();
+    const {allChats,allChatFetchFunction} = useAuth();
+    useEffect(()=>{
+      allChatFetchFunction();
+    },[])
     
 
 console.log(allChats)
 const displayChats=allChats?.map((item,index)=>{
  
-    const senderFirstname = item?.users[0]?.name;
+    const senderFirstname = item?.users[1]?.firstname;
         const recentMsg = item?.latestMessage?.content;
 const id=item?._id;
 console.log(item[0]);
@@ -21,7 +24,7 @@ console.log(item[0]);
 })
   return (
     <div className='p-[2rem] ml-14 flex flex-wrap gap-[1rem]'>
-      {displayChats}
+      {displayChats?displayChats:"Fetching Data"}
   
     </div>
   )
