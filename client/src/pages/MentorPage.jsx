@@ -4,16 +4,15 @@ import CourseCard from "../components/ui/Templates/mentorPage/CourseCard";
 import TestimonialCard from "@/components/ui/Templates/mentorPage/TestimonialCard";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAuth } from '@/store/auth';
 
 function MentorPage() {
   const [data, setData] = useState([]);
-
+  const ENDPOINT ="https://upskill-mafia-mern-hackathon.vercel.app";
   const params = useParams();
 
   const getSingleMentorData = async () => {
     try {
-      const response = await fetch(`http://localhost:9000/ment/${params.id}`, {
+      const response = await fetch(`${ENDPOINT}/ment/${params.id}`, {
         method: "GET",
       });
       const data = await response.json();

@@ -37,12 +37,7 @@ function Navbar() {
           >
             Search
           </Link>
-          <Link
-            to="#"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Orders
-          </Link>
+         
           
         </nav>
         <Sheet>
@@ -68,12 +63,7 @@ function Navbar() {
               <Link to="/search" className=" text-muted-foreground hover:text-foreground">
                 Search
               </Link>
-              <Link
-                to="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Orders
-              </Link>
+             
               
             </nav>
           </SheetContent>

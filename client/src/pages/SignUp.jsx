@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { Bounce, toast } from "react-toastify";
@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 export default function SignUp() {
   const [user, setUser] = useState({
     firstname: "",
@@ -22,6 +23,7 @@ export default function SignUp() {
   });
   const navigate = useNavigate();
   const { storeTokenInLS } = useAuth();
+  const ENDPOINT ="https://upskill-mafia-mern-hackathon.vercel.app";
   console.log(storeTokenInLS())
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -34,7 +36,7 @@ export default function SignUp() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:9000/auth/register", {
+      const response = await fetch(`${ENDPOINT}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +52,7 @@ export default function SignUp() {
         setUser({ firstname: "",lastname:"", email: "", password: "" });
         toast.success("Registration Successful", {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -65,7 +67,7 @@ export default function SignUp() {
           res_data.extraDetails ? res_data.extraDetails : res_data.message,
           {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -144,13 +146,14 @@ export default function SignUp() {
                 onChange={handleInput}
               />
             </div>
+            <div className="flex items-center space-x-2">
+      <Switch id="isMentor" />
+      <Label htmlFor="isMentor">Are you Mentor?</Label>
+    </div>
             <Button type="submit" className="w-full" >
               Create an account
             </Button>
-            
-            <Button variant="outline" className="w-full">
-              Sign up with GitHub
-            </Button>
+
           </div>
           </form>
           <div className="mt-4 text-center text-sm">

@@ -31,7 +31,11 @@ const register = async (req, res) => {
       userID: userCreated._id.toString(),
     });
 
+<<<<<<< HEAD
     console.log(userCreated);
+=======
+    // console.log(userCreated)
+>>>>>>> 0d1ac48aa1967b4c3c31c2a3f3d2efbca0a5d7d3
   } catch (error) {
     res.status(500).json({ message: "internal service error" });
   }
@@ -66,7 +70,7 @@ const login = async (req, res) => {
 const user = async (req, res) => {
   try {
     const userData = req.user;
-    console.log(userData);
+    // console.log(userData);
     return res.status(200).json({ userData });
   } catch (error) {
     res.status(401).json({ message: `error from user route,${error}` });

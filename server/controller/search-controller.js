@@ -1,4 +1,4 @@
-const Mentor = require("../models/mentor-model");
+const User = require("../models/user-model");
 
 const searchMentorsByCourses = async (req, res) => {
   try {
@@ -6,7 +6,7 @@ const searchMentorsByCourses = async (req, res) => {
     const query = req.query.query;
 
     // Perform the search in the Mentor collection
-    const result = await Mentor.find({
+    const result = await User.find({
       courses: { $regex: new RegExp(query, "i") },
     });
     console.log(query);
@@ -25,7 +25,7 @@ const searchBar = async (req, res) => {
         const query = req.query.query;
     
         // Perform the search using aggregation pipeline
-        const result = await Mentor.aggregate([
+        const result = await User.aggregate([
           {
             $match: {
               courses: { $regex: new RegExp(query, "i") }

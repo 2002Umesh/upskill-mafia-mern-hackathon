@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { Bounce, toast } from "react-toastify";
@@ -13,12 +13,13 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 export default function SignIn() {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
-
+  const ENDPOINT ="https://upskill-mafia-mern-hackathon.vercel.app";
   const navigate = useNavigate();
 
   const { storeTokenInLS } = useAuth();
@@ -37,7 +38,7 @@ export default function SignIn() {
     e.preventDefault();
     console.log(user);
     try {
-      const response = await fetch(`http://localhost:9000/auth/login`, {
+      const response = await fetch(`${ENDPOINT}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +51,7 @@ export default function SignIn() {
       if (response.ok) {
         toast.success("Login Successful", {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -136,12 +137,14 @@ export default function SignIn() {
                   required
                 />
               </div>
+              <div className="flex items-center space-x-2">
+      <Switch id="isMentor" />
+      <Label htmlFor="isMentor">Are you Mentor?</Label>
+    </div>
               <Button type="submit" className="w-full">
                 Login
               </Button>
-              <Button variant="outline" className="w-full">
-                Login with Google
-              </Button>
+             
             </div>
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?

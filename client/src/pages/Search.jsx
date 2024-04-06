@@ -6,11 +6,13 @@ import { useEffect } from 'react';
 function Search() {
   const {filteredMentors,getMentors} = useAuth();
   useEffect(()=>{
-    getMentors()
+    getMentors();
+    window.scrollTo(0, 0);
   },[])
+  console.log(filteredMentors)
 const displaymentorsList=filteredMentors?.map((item,index)=>{
   return(
-<UserCard key={index} title={item.name} rating={item.rating} desc={item.description} courses={item.courses} userEnrolled={item.userEnrolled} id={item._id}></UserCard>
+<UserCard key={index} title={item.firstname} rating={item.rating} desc={item.description} courses={item.courses} userEnrolled={item.userEnrolled} id={item._id}></UserCard>
   )
 })
 

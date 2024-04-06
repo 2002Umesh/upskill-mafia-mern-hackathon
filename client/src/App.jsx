@@ -8,25 +8,19 @@ import MentorPage from './pages/MentorPage'
 import Profile from './pages/Profile'
 import Home from './pages/Home'
 import Sidebar from './components/ui/Templates/profilePage/Sidebar'
-import ChatCard from "./components/ui/Templates/profilePage/ChatCard"
-import MessageCard from "./components/ui/Templates/profilePage/MessageCard"
 import Chatpage from "./pages/ChatPage"
 import SinglePage from './pages/SinglePage'
+import Error from './pages/Error'
 
 
 function App() {
-
-
   return (
-    <>
-   
+    <>   
    <Routes>
     <Route path='/' element={<Navbar></Navbar>}>
-
     <Route path='/search' element={<Search></Search>}/>
     <Route index element={<Home></Home>}/>
     <Route path='/mentor/:id' element={<MentorPage/>}/>
-
     </Route>
     <Route path='/profile' element={<Sidebar/>}>
     <Route path='/profile/chat' element={<Chatpage></Chatpage>}/>
@@ -35,10 +29,8 @@ function App() {
     </Route>
     <Route path='/signup' element={<SignUp></SignUp>}/>
     <Route path='/signin' element={<SignIn></SignIn>}/>
-   </Routes>
-   
-
-      
+    <Route path='*' element={<Error></Error>}/>
+   </Routes>   
     </>
   )
 }
