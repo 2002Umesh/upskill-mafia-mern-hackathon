@@ -38,6 +38,9 @@ app.use("/ment",mentorRoute)
 app.use("/api",searchRoute);
 app.use("/chat",chatRoute);
 app.use("/message",messageRoute);
+app.get("/",(req,res)=>{
+  res.send("hello")
+})
 
 io.on("connection",(socket)=>{
   console.log('connected to socket.io',socket.id)
