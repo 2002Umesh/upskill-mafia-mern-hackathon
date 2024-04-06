@@ -1,7 +1,7 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "@/store/auth";
-import ChatCard from "../components/ui/Templates/profilePage/ChatCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MessageCard from "../components/ui/Templates/profilePage/MessageCard";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { io } from "socket.io-client";
@@ -13,56 +13,37 @@ function SinglePage() {
   const { id } = useParams();
   const { user } = useAuth();
 
-  const [socketConnected, setSocketConnected] = useState(false);
+  const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const socket = io(ENDPOINT);
-    socket.emit("setup", user._id);
-    socket.on("connect", () => setSocketConnected(true));
+    // Establish socket connection when the component mounts
+    const newSocket = io(ENDPOINT);
+    newSocket.emit("setup", user._id);
 
+    // Listen for "connect" event to set socketConnected state
+    newSocket.on("connect", () => {
+      setSocket(newSocket);
+    });
+
+    // Clean up socket connection when the component unmounts
     return () => {
-      // Clean up socket connection when component unmounts
-      socket.disconnect();
+      newSocket.disconnect();
     };
-  }, []);
+  }, [user._id]); // Dependency array to prevent re-establishing socket on re-renders
 
   useEffect(() => {
+    // Fetch all messages for the selected chat
     allMessageFetchFunction(id);
   }, [id, allMessageFetchFunction]);
 
-  // Establish socket connection outside the component
-const socket = io(ENDPOINT);
-
-// useEffect(() => {
-//   const handleNewMessage = (newMsg) => {
-//     if (!selectedChat || selectedChat._id !== newMsg.chat._id) {
-//       console.log(newMsg);
-//     } else {
-//       setAllMessage((prevMessages) => [...prevMessages, newMsg]);
-//     }
-//   };
-
-//   // Subscribe to the "message received" event
-//   socket.on("message received", handleNewMessage);
-
-//   // Clean up socket event listener when component unmounts
-//   return () => {
-//     socket.off("message received", handleNewMessage);
-//   };
-// });
-
-useEffect(()=>{
-  socket.on("message received",(data)=>{
-    setAllMessage([...allMessage,data])
-  })
-})
-
-// Disconnect the socket when the component unmounts
-// useEffect(() => {
-//   return () => {
-//     socket.disconnect();
-//   };
-// }, []);
+  useEffect(() => {
+    // Listen for "message received" event and update state with new message
+    if (socket) {
+      socket.on("message received", (data) => {
+        setAllMessage((prevMessages) => [...prevMessages, data]);
+      });
+    }
+  }, [socket, setAllMessage]);
 
   const displayChats = allMessage?.map((item, index) => {
     const content = item?.content;

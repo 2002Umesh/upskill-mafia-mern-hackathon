@@ -7,6 +7,7 @@ import {
   } from "@/components/ui/accordion"
 import TestimonialCard from "@/components/ui/Templates/mentorPage/TestimonialCard"
 import Footer from "@/components/footer/Footer"
+import { Link } from "react-router-dom"
 
 function Home() {
     return (
@@ -17,16 +18,20 @@ function Home() {
                     Unlock Potential, Transform Futures: Mentorship Awaits
                     </h1>
                     <div className="flex gap-[1rem]">
-                        <Button>Get started</Button>
-                        <Button variant="outline">Get started</Button>
+                      <Link to="/search">
+                      <Button>Get started</Button>
+                      </Link>
+                        
+                        {/* <Button variant="outline">Get started</Button> */}
                     </div>
 
                 </div>
                 <div className="flex justify-center align-middle w-[100%] h-2/4 md:h-[100%] md:w-2/5 p-[1rem]">
 <div className="w-full h-full bg-hero-image bg-cover"></div>
+{/* <Carousal></Carousal> */}
                 </div>
             </div>
-            <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl my-[6.4rem] text-center px-[6.4rem]">
+            <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl my-[6.4rem] text-center px-2 md:px-[6.4rem]">
             Tailored Mentorship for Your Growth
     </h1>
             <div className="p-[2rem] w-full md:w-[40vw] flex mx-auto my-[6.4rem]">
@@ -52,7 +57,7 @@ function Home() {
     </Accordion>
             </div>
 <div className="p-[2rem] w-full md:w-[80vw] flex justify-center flex-col m-auto">
-<h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center my-[6.4rem]">
+<h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center my-[6.4rem] px-2 md:px-[6.4rem]">
 Empowering Success: Hear From Our Users!
     </h1>
     <div className="flex mx-auto mb-[4rem] flex-wrap justify-around gap-[2rem] w-full">

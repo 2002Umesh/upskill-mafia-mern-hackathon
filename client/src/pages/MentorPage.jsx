@@ -4,7 +4,6 @@ import CourseCard from "../components/ui/Templates/mentorPage/CourseCard";
 import TestimonialCard from "@/components/ui/Templates/mentorPage/TestimonialCard";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAuth } from '@/store/auth';
 
 function MentorPage() {
   const [data, setData] = useState([]);

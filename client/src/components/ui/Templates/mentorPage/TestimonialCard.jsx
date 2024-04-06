@@ -8,7 +8,7 @@ function UserCard({name,review}) {
         {/* <CardDescription>{name}</CardDescription> */}
       </CardHeader>
       <CardContent>
-        <p>{review}</p>
+        <p className=" b-2 pl-6 italic">{`${review}`}</p>
       </CardContent>
     </Card>
   );

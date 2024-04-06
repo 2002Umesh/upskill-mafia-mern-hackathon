@@ -6,7 +6,8 @@ import { useEffect } from 'react';
 function Search() {
   const {filteredMentors,getMentors} = useAuth();
   useEffect(()=>{
-    getMentors()
+    getMentors();
+    window.scrollTo(0, 0);
   },[])
   console.log(filteredMentors)
 const displaymentorsList=filteredMentors?.map((item,index)=>{
