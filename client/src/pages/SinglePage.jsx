@@ -6,7 +6,7 @@ import MessageCard from "../components/ui/Templates/profilePage/MessageCard";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { io } from "socket.io-client";
 
-const ENDPOINT = `http://localhost:9000`;
+const ENDPOINT ="https://upskill-mafia-mern-hackathon.vercel.app";
 
 function SinglePage() {
   const { allMessage, allMessageFetchFunction, setAllMessage, selectedChat } = useAuth();

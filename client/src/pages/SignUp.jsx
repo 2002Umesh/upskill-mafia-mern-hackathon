@@ -23,7 +23,7 @@ export default function SignUp() {
   });
   const navigate = useNavigate();
   const { storeTokenInLS } = useAuth();
-  const ENDPOINT = "http://localhost:9000" || "https://upskill-mafia-mern-hackathon.vercel.app";
+  const ENDPOINT ="https://upskill-mafia-mern-hackathon.vercel.app";
   console.log(storeTokenInLS())
   const handleInput = (e) => {
     const { name, value } = e.target;
