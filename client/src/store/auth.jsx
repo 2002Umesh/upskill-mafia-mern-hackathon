@@ -214,10 +214,10 @@ console.log("user",data)
 
   useEffect(() => {
     // getAllUsersData()
-    // if(!token){
-    //   navigate('/signin')
-    //   return
-    // }
+    if(!token){
+      navigate('/signin')
+      return
+    }
     getMentors();
 
     userAuthentication();
