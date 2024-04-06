@@ -5,7 +5,8 @@ import { io } from "socket.io-client";
 import {useNavigate} from "react-router-dom"
 export const AuthContext = createContext();
 
-const ENDPOINT = "http://localhost:9000";
+const ENDPOINT = "http://localhost:9000" || "https://upskill-mafia-mern-hackathon.vercel.app";
+
 var socket;
 
 // eslint-disable-next-line react/prop-types
@@ -58,7 +59,7 @@ console.log("user",user)
   const userAuthentication = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("http://localhost:9000/auth/user", {
+      const response = await fetch(`${ENDPOINT}/auth/user`, {
         method: "GET",
 
         headers: {
@@ -80,7 +81,7 @@ console.log("user",user)
 
   const getMentors = async () => {
     try {
-      const response = await fetch(`http://localhost:9000/ment/mentors`, {
+      const response = await fetch(`${ENDPOINT}/ment/mentors`, {
         method: "GET",
       });
       if (response.ok) {
@@ -98,7 +99,7 @@ console.log("user",user)
 
   const getAllUsersData = async () => {
     try {
-      const response = await fetch(`http://localhost:9000/profile/user`, {
+      const response = await fetch(`${ENDPOINT}/profile/user`, {
         method: "GET",
       });
       const data = await response.json();
@@ -110,7 +111,7 @@ console.log("user",user)
     }
   };
 
-  const apiUrl = "http://localhost:9000/chat";
+  const apiUrl = `${ENDPOINT}/chat`;
 
   const allChatFetchFunction = async () => {
     try {
@@ -134,7 +135,7 @@ console.log("user",user)
     }
   };
   const allMessageFetchFunction = async (id) => {
-    const msgUrl = `http://localhost:9000/message/${id}`;
+    const msgUrl = `${ENDPOINT}/message/${id}`;
     try {
       const response = await fetch(msgUrl,{
         method: "GET",
@@ -181,7 +182,7 @@ console.log("user",data)
 };
 
   const sendMessage = async (id, content) => {
-    const msgUrl = `http://localhost:9000/message`;
+    const msgUrl = `${ENDPOINT}/message`;
     try {
       const response = await fetch(msgUrl, {
         method: "POST",

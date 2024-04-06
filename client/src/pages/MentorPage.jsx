@@ -7,12 +7,12 @@ import { useParams } from "react-router-dom";
 
 function MentorPage() {
   const [data, setData] = useState([]);
-
+  const ENDPOINT = "http://localhost:9000" || "https://upskill-mafia-mern-hackathon.vercel.app";
   const params = useParams();
 
   const getSingleMentorData = async () => {
     try {
-      const response = await fetch(`http://localhost:9000/ment/${params.id}`, {
+      const response = await fetch(`${ENDPOINT}/ment/${params.id}`, {
         method: "GET",
       });
       const data = await response.json();

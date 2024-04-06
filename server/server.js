@@ -15,7 +15,7 @@ const connectDB = require("./utils/db");
 const PORT = 9000;
 
 const corsOptions = {
-  origin: ["http://localhost:5173"],
+  origin: ["http://localhost:5173","https://upskill-mafia-hackathon.vercel.app"],
   methods: "POST,GET,PUT,DELETE,HEAD,PATCH",
   credentials: true,
 };
@@ -24,7 +24,7 @@ const server = http.createServer(app)
 const io = require("socket.io")(server,{
   pingTimeout:60000,
   cors: {
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:5173","https://upskill-mafia-hackathon.vercel.app"],
     methods: "POST,GET,PUT,DELETE,HEAD,PATCH",
     credentials: true,
   }

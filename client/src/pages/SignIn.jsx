@@ -19,7 +19,7 @@ export default function SignIn() {
     email: "",
     password: "",
   });
-
+  const ENDPOINT = "http://localhost:9000" || "https://upskill-mafia-mern-hackathon.vercel.app";
   const navigate = useNavigate();
 
   const { storeTokenInLS } = useAuth();
@@ -38,7 +38,7 @@ export default function SignIn() {
     e.preventDefault();
     console.log(user);
     try {
-      const response = await fetch(`http://localhost:9000/auth/login`, {
+      const response = await fetch(`${ENDPOINT}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
