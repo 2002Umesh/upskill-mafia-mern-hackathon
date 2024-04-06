@@ -12,7 +12,7 @@ const messageRoute = require("./router/MessageRouter")
 
 const connectDB = require("./utils/db");
 
-const PORT = 9000;
+const PORT ="https://upskill-mafia-mern-hackathon.vercel.app" || 9000;
 
 const corsOptions = {
   origin: ["http://localhost:5173","https://upskill-mafia-hackathon.vercel.app"],
