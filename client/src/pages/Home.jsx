@@ -27,7 +27,7 @@ function Home() {
 
                 </div>
                 <div className="flex justify-center align-middle w-[100%] h-2/4 md:h-[100%] md:w-2/5 p-[1rem]">
-<div className="w-full h-full bg-hero-image bg-cover"></div>
+<div className="w-full h-full bg-hero-image bg-cover bg-center"></div>
 {/* <Carousal></Carousal> */}
                 </div>
             </div>

@@ -18,7 +18,8 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'hero-image': "url('https://i.pinimg.com/564x/21/40/45/2140456a9e7d87a64f23c746c267570a.jpg')",
+        'hero-image': "url('https://i.pinimg.com/564x/1a/dc/ff/1adcff76e5a8901f2cc0e1bdcaba7ca0.jpg')",
+        // 'hero-image': "url('https://i.pinimg.com/564x/21/40/45/2140456a9e7d87a64f23c746c267570a.jpg')",
         
       },
       colors: {
