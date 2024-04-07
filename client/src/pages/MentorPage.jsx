@@ -4,10 +4,13 @@ import CourseCard from "../components/ui/Templates/mentorPage/CourseCard";
 import TestimonialCard from "@/components/ui/Templates/mentorPage/TestimonialCard";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useAuth } from "@/store/auth";
+import Loader from "@/components/footer/Loader";
 
 function MentorPage() {
+  const {isLoad,setIsLoad}=useAuth()
   const [data, setData] = useState([]);
-  const ENDPOINT ="https://upskill-mafia-mern-hackathon.vercel.app";
+  const ENDPOINT ="http://localhost:9000" || "https://upskill-mafia-mern-hackathon.vercel.app";
   const params = useParams();
 
   const getSingleMentorData = async () => {
@@ -18,6 +21,7 @@ function MentorPage() {
       const data = await response.json();
       console.log(data);
       setData(data);
+      setIsLoad(false)
     } catch (error) {
       console.error("Error fetching service data:", error);
     }
@@ -56,12 +60,18 @@ function MentorPage() {
 
 
   useEffect(() => {
+    setIsLoad(true)
     getSingleMentorData();
   }, []);
 
   return (
     <>
-      {data.length > 0 && (
+    {
+      isLoad?
+      <div className='w-[100vw] h-[100vh] flex justify-center align-middle mt-24'>
+      <Loader/></div>:
+    
+      data.length > 0 && (
         <div className="w-full p-[2rem] flex flex-col md:flex-row gap-[2rem] mt-12 ">
           <div className="w-[100%] md:w-1/4 ">
             <Avatar>

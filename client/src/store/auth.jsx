@@ -5,7 +5,7 @@ import { io } from "socket.io-client";
 import {useNavigate} from "react-router-dom"
 export const AuthContext = createContext();
 
-const ENDPOINT = "https://upskill-mafia-mern-hackathon.vercel.app";
+const ENDPOINT ="http://localhost:9000" || "https://upskill-mafia-mern-hackathon.vercel.app";
 
 var socket;
 
@@ -21,6 +21,7 @@ const navigate=useNavigate();
   const [filteredMentors, setFilteredMentors] = useState([]);
   const [allChats, setAllChats] = useState([]);
   const [allMessage, setAllMessage] = useState([]);
+  const [isLoad, setIsLoad] = useState(false);
   const authToken = `Bearer ${token}`;
 console.log("user",user)
   const params = useParams();
@@ -89,6 +90,7 @@ console.log("user",user)
         console.log(data.msg);
         setMentors(data.msg);
         setFilteredMentors(data.msg);
+        setIsLoad(false);
       }
     } catch (error) {
       console.log(`services error ${error}`);
@@ -128,7 +130,7 @@ console.log("user",user)
       const data = await response.json();
 
       setAllChats(data);
-
+      setIsLoad(false)
       console.log(allChats);
     } catch (error) {
       console.error("Error fetching data:", error.message);
@@ -151,7 +153,7 @@ console.log("user",user)
       
   
       setAllMessage(data);
-  
+      setIsLoad(false)
     } catch (error) {
       console.error('Error fetching data:', error.message);
     }
@@ -174,7 +176,8 @@ const createChat = async (id) => {
     
 console.log("user",data)
     setAllChats([...allChats,data])
-    navigate(`/profile/chat/${data?._id}`)
+    navigate(`/profile/chat/${data?._id}`);
+    setIsLoad(false)
  console.log(allChats)
   } catch (error) {
     console.error('Error fetching data:', error.message);
@@ -204,6 +207,8 @@ console.log("user",data)
       console.error("Error fetching data:", error.message);
     }
   };
+
+  
 
   useEffect(() => {
     socket = io(ENDPOINT);
@@ -254,7 +259,7 @@ console.log("user",data)
         setAllMessage,
         allMessage,
         sendMessage,
-        selectedChat,setSelectedchat,getMentors,createChat
+        selectedChat,setSelectedchat,getMentors,createChat,isLoad, setIsLoad
       }}
     >
       {children}

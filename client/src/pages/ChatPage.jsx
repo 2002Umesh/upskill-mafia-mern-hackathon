@@ -2,11 +2,13 @@ import { useEffect } from 'react'
 import ChatCard from "../components/ui/Templates/profilePage/ChatCard"
 
 import { useAuth } from '@/store/auth';
+import Loader from '@/components/footer/Loader';
 
 function ChatPage() {
 
-    const {allChats,allChatFetchFunction,user} = useAuth();
+    const {allChats,allChatFetchFunction,user,isLoad,setIsLoad} = useAuth();
     useEffect(()=>{
+      setIsLoad(true);
       allChatFetchFunction();
       window.scrollTo(0, 0);
     },[])
@@ -28,10 +30,18 @@ console.log(item[0]);
     )
 })
   return (
+    <>
+    {
+      isLoad?
+      <div className='w-full h-screen flex justify-center align-middle'>
+      <Loader/></div>:
+   
     <div className='p-[2rem] ml-14 flex flex-wrap gap-[1rem]'>
-      {displayChats?displayChats:"Fetching Data"}
+      {displayChats.length>0?displayChats:"No chats"}
   
-    </div>
+    </div> }
+    </>
+    
   )
 }
 

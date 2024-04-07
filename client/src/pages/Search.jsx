@@ -1,11 +1,13 @@
+import Loader from '@/components/footer/Loader';
 import Filter from '@/components/ui/Templates/searchPage/Filter'
 import UserCard from '@/components/ui/Templates/searchPage/UserCard'
 import { useAuth } from '@/store/auth';
 import { useEffect } from 'react';
 
 function Search() {
-  const {filteredMentors,getMentors} = useAuth();
+  const {filteredMentors,getMentors,isLoad,setIsLoad} = useAuth();
   useEffect(()=>{
+    setIsLoad(true)
     getMentors();
     window.scrollTo(0, 0);
   },[])
@@ -21,8 +23,8 @@ const displaymentorsList=filteredMentors?.map((item,index)=>{
     <Filter></Filter>
 
     <div className='flex flex-wrap gap-[1rem]'>
-      {
-        displaymentorsList?displaymentorsList:"Fetching Data"
+      {isLoad?<Loader/>:
+        displaymentorsList
       }
 
     </div>
