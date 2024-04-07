@@ -38,7 +38,7 @@ function Profile() {
                             Mentors
                         </h3>
                         <div className="flex gap-[2rem] flex-wrap">
-                            {allMentors}
+                            {allMentors.length>0?allMentors:"Not connected to any mentor"}
                         </div>
                     </div> : ""}
                 </div>
