@@ -7,7 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { io } from "socket.io-client";
 import Loader from "@/components/footer/Loader";
 
-const ENDPOINT ="http://localhost:9000" || "https://upskill-mafia-mern-hackathon.vercel.app";
+const ENDPOINT ="https://upskill-mafia-mern-hackathon.vercel.app";
 
 function SinglePage() {
   const { allMessage, allMessageFetchFunction, setAllMessage, selectedChat,isLoad,setIsLoad } = useAuth();

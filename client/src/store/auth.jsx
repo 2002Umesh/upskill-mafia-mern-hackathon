@@ -3,9 +3,11 @@ import { Bounce, toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 import { io } from "socket.io-client";
 import {useNavigate} from "react-router-dom"
+// import "dotenv/config"
+
 export const AuthContext = createContext();
 
-const ENDPOINT ="http://localhost:9000" || "https://upskill-mafia-mern-hackathon.vercel.app";
+const ENDPOINT ="https://upskill-mafia-mern-hackathon.vercel.app";
 
 var socket;
 

@@ -10,7 +10,7 @@ import Loader from "@/components/footer/Loader";
 function MentorPage() {
   const {isLoad,setIsLoad}=useAuth()
   const [data, setData] = useState([]);
-  const ENDPOINT ="http://localhost:9000" || "https://upskill-mafia-mern-hackathon.vercel.app";
+  const ENDPOINT ="https://upskill-mafia-mern-hackathon.vercel.app";
   const params = useParams();
 
   const getSingleMentorData = async () => {
