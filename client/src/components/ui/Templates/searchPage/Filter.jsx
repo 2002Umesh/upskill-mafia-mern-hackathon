@@ -21,12 +21,12 @@ function Filter() {
     let value = e.target.value;
     setSearch(value);
   };
-
+  const ENDPOINT ="https://upskill-mafia-mern-hackathon.vercel.app";
   const handleSubmit = async () => {
     
     try {
       const response = await fetch(
-        `http://localhost:9000/api/searches?query=${search}`,
+        `${ENDPOINT}/api/searches?query=${search}`,
         {
           method: "GET",
         }
@@ -42,7 +42,7 @@ function Filter() {
   const getMentors = async (courseName) => {
     try {
       const response = await fetch(
-        `http://localhost:9000/api/search?query=${courseName}`,
+        `${ENDPOINT}/api/search?query=${courseName}`,
         {
           method: "GET",
         }

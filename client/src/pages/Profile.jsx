@@ -1,3 +1,4 @@
+import Loader from "@/components/footer/Loader";
 import ConnectedMentors from "@/components/ui/Templates/profilePage/ConnectedMentors"
 import ProfileCard from "@/components/ui/Templates/profilePage/ProfileCard"
 import { useAuth } from '@/store/auth';
@@ -5,14 +6,15 @@ import { useEffect } from "react"
 
 function Profile() {
 
-    const { allChats, allChatFetchFunction, user } = useAuth();
+    const { allChats, allChatFetchFunction, user,isLoad,setIsLoad } = useAuth();
     useEffect(() => {
+        setIsLoad(true)
         allChatFetchFunction();
         window.scrollTo(0, 0);
     }, [])
-    console.log("meee", allChats)
+    // console.log("meee", allChats)
     // const firstData = allChats[0]?.users[0];
-    console.log(allChats)
+    // console.log(allChats)
     
     const allMentors = allChats?.map((item, index) => {
         return (
@@ -21,6 +23,11 @@ function Profile() {
     })
     return (
         <>
+        {
+            isLoad?
+            <div className='w-[100vw] h-[100vh] flex justify-center align-middle'>
+            <Loader/></div>:
+        
             <div className="flex p-[2rem] gap-[2rem] flex-col ml-12">
                 <div className="flex flex-col md:flex-row gap-[2rem]">
                     <div className="w-[100%] md:w-2/4">
@@ -31,13 +38,13 @@ function Profile() {
                             Mentors
                         </h3>
                         <div className="flex gap-[2rem] flex-wrap">
-                            {allMentors}
+                            {allMentors.length>0?allMentors:"Not connected to any mentor"}
                         </div>
                     </div> : ""}
                 </div>
                 <div className="flex flex-wrap gap-[1rem]">
                 </div>
-            </div>
+            </div>}
         </>
     )
 }

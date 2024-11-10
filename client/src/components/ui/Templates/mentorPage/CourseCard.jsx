@@ -23,7 +23,7 @@ function UserCard({ name, rating, desc, price }) {
         <p>{desc}</p>
       </CardContent>
       <CardFooter className="flex gap-2">
-      {!(price==="free")?`Price : ${price}`:""}
+      {!(price==="free")?`Price : Rs${price}`:""}
       
    {price==="free"?
   <Button onClick={()=>createChat(id)}>Free</Button> :<Button disabled="true">Purchase</Button>

@@ -5,11 +5,12 @@ import { useState } from "react";
 import MessageCard from "../components/ui/Templates/profilePage/MessageCard";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { io } from "socket.io-client";
+import Loader from "@/components/footer/Loader";
 
 const ENDPOINT ="https://upskill-mafia-mern-hackathon.vercel.app";
 
 function SinglePage() {
-  const { allMessage, allMessageFetchFunction, setAllMessage, selectedChat } = useAuth();
+  const { allMessage, allMessageFetchFunction, setAllMessage, selectedChat,isLoad,setIsLoad } = useAuth();
   const { id } = useParams();
   const { user } = useAuth();
 
@@ -33,6 +34,7 @@ function SinglePage() {
 
   useEffect(() => {
     // Fetch all messages for the selected chat
+    setIsLoad(true);
     allMessageFetchFunction(id);
   }, [id, allMessageFetchFunction]);
 
@@ -66,7 +68,10 @@ function SinglePage() {
         <ScrollArea className="h-[72vh] w-full rounded-md border flex flex-col gap-5">
           <div className="p-4">
             <h4 className="mb-4 text-sm font-medium leading-none">Messages</h4>
-            {displayChats}
+            {
+              displayChats.length>0?displayChats:<p className="text-sm text-muted-foreground lowercase font-mono">Say hi to start the conversation</p>
+            }
+            
           </div>
         </ScrollArea>
 
